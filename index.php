@@ -5,7 +5,7 @@
 	$port = '8000';
 //	The regular expression that splits the song info into Artist/Title. Usually escaped space hyphon space.
 	$splitSongRegex = "/\ \-\ /";
-//	Attempt to get stream data using a non SSL connection
+//	Attempt to get the stream data using a non SSL connection
     $streamUrl = "http://".$server.":".$port."/stats?sid=1";
     $streamData = @file_get_contents($streamUrl);
 //	Exit if no data returned
