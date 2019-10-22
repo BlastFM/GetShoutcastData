@@ -54,7 +54,7 @@ if ($streamData === FALSE) {
     $peakListenersCloseTag = strpos($streamData, "</PEAKLISTENERS>");
     $peakListenersLength = $peakListenersCloseTag  - $peakListenersTag;
     $peakListeners = substr($streamData, $peakListenersTag, $peakListenersLength);
-//	All data can now be accessed using variables, lets show what's currently playing for example
+//	All data can now be accessed using variables, let's show what's currently playing for example
     echo $combined;
 //	FUNCTIONS
  function decode($str) {
