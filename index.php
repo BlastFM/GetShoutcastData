@@ -10,7 +10,7 @@
     $streamData = @file_get_contents($streamUrl);
 //	Exit if no data returned
 if ($streamData === FALSE) {
-    echo "Unable to read stream data";
+    echo "<p>Unable to read stream data</p>";
     exit();
 }
 //	Get song
