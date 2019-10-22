@@ -1,12 +1,12 @@
 <?php
 //  Domain name or IP address of the stream
-	$server = '45.33.5.23';
+    $server = '45.33.5.23';
 //	Port number of the stream
-	$port = '8000';
+    $port = '8000';
 //  Although are streams are secure, we will attempt to get the data using a non SSL connection
     $streamUrl = "http://".$server.":".$port."/stats?sid=1";
 //  The regular expression that splits the song info into Artist/Title. Usually escaped space hyphon space.
-	$splitSongRegex = "/\ \-\ /";
+    $splitSongRegex = "/\ \-\ /";
 //	Attempt to get the stream data using a non SSL connection
     $streamData = @file_get_contents($streamUrl);
 //	Exit if no data returned
