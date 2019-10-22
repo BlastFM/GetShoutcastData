@@ -58,9 +58,11 @@ if ($streamData === FALSE) {
     echo $combined;
 //	FUNCTIONS
  function decode($str) {
-    $find = array(',  ', ' & ', '&apos;', '&amp;apos;', '&amp;amp;');
-    $replace = array(', ', ' &amp; ', '\'', '\'', '&amp;');
- 	return str_replace($find, $replace, $str);
+ 	$find = array('&apos;', '&amp;apos;', '&quot;', ' &amp;amp; ', ' &amp; ');
+ 	$replace = array('\'', '\'', '"', ' & ', ' & ');
+	$str = str_replace($find, $replace, $str);
+ 	unset($find, $replace);
+ 	return $str;
  	exit();
 }
 ?>
