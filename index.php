@@ -1,5 +1,5 @@
 <?php
-//	Domain name or IP address of the stream
+//  Domain name or IP address of the stream
 	$server = '45.33.5.23';
 //	Port number of the stream
 	$port = '8000';
@@ -10,7 +10,7 @@
     $streamData = @file_get_contents($streamUrl);
 //	Exit if no data returned
 if ($streamData === FALSE) {
-    echo "<p>Unable to read stream data</p>";
+    echo "Unable to read stream data from ".$streamUrl;
     exit();
 }
 //	Get song
