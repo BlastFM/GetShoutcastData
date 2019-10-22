@@ -5,3 +5,4 @@ Although this system is being used in a production environment, please be aware 
 See it in use at https://tweetcast.blastfm.net
 
 We are also getting images, based on the artist/track combination from our own Music Art API system
+This is intended as an example of how you might get data from a stream and does not perfrom all of the functions needed for a player
