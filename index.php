@@ -14,7 +14,7 @@ if ($streamData === FALSE) {
     echo "Unable to read stream data from ".$streamUrl;
     exit();
 }
-//	Get song
+//  Get song
     $songTitleTag = strpos($streamData, "<SONGTITLE>") + 11;
     $songTitleCloseTag = strpos($streamData, "</SONGTITLE>");
     $songTitleLength = $songTitleCloseTag - $songTitleTag;
@@ -25,39 +25,39 @@ if ($streamData === FALSE) {
     $rawArtist = decode($artist);
     $rawTrack = decode($track);
     $combined = decode($artist." - ".$track);
-//	Get stream title
+//  Get stream title
     $titleTag = strpos($streamData, "<SERVERTITLE>") + 13;
     $titleCloseTag = strpos($streamData, "</SERVERTITLE>");
     $titleLength = $titleCloseTag - $titleTag;
     $title = substr($streamData, $titleTag, $titleLength);
-//	Get genre
+//  Get genre
     $genreTag = strpos($streamData, "<SERVERGENRE>") + 13;
     $genreCloseTag = strpos($streamData, "</SERVERGENRE>");
     $genreLength = $genreCloseTag - $genreTag;
     $genre = substr($streamData, $genreTag, $genreLength);
-//	Get bitrate
+//  Get bitrate
     $bitrateTag = strpos($streamData, "<BITRATE>") + 9;
     $bitrateCloseTag = strpos($streamData, "</BITRATE>");
     $bitrateLength = $bitrateCloseTag - $bitrateTag;
     $bitrate = substr($streamData, $bitrateTag, $bitrateLength);
-//	Get samplerate
+//  Get samplerate
     $samplerateTag = strpos($streamData, "<SAMPLERATE>") + 12;
     $samplerateCloseTag = strpos($streamData, "</SAMPLERATE>");
     $samplerateLength = $samplerateCloseTag - $samplerateTag;
     $samplerate = substr($streamData, $samplerateTag, $samplerateLength);
-//	Get listeners
+//  Get listeners
     $listenersTag = strpos($streamData, "<CURRENTLISTENERS>") + 18;
     $listenersCloseTag = strpos($streamData, "</CURRENTLISTENERS>");
     $listenersLength = $listenersCloseTag - $listenersTag;
     $listeners = substr($streamData, $listenersTag, $listenersLength);
-//	Get peak listeners
+//  Get peak listeners
     $peakListenersTag = strpos($streamData, "<PEAKLISTENERS>") + 15;
     $peakListenersCloseTag = strpos($streamData, "</PEAKLISTENERS>");
     $peakListenersLength = $peakListenersCloseTag  - $peakListenersTag;
     $peakListeners = substr($streamData, $peakListenersTag, $peakListenersLength);
-//	All data can now be accessed using variables, let's show what's currently playing for example
+//  All data can now be accessed using variables, let's show what's currently playing for example
     echo $combined;
-//	FUNCTIONS
+//  FUNCTIONS
  function decode($str) {
  	$find = array('&apos;', '&amp;apos;', '&quot;', ' &amp;amp; ', ' &amp; ');
  	$replace = array('\'', '\'', '"', ' & ', ' & ');
