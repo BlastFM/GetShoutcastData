@@ -9,7 +9,7 @@
     $splitSongRegex = "/\ \-\ /";
 //  Attempt to get the stream data using a non SSL connection
     $streamData = @file_get_contents($streamUrl);
-//	Exit if no data returned
+//  Exit if no data returned
 if ($streamData === FALSE) {
     echo "Unable to read stream data from ".$streamUrl;
     exit();
