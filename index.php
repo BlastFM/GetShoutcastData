@@ -14,11 +14,12 @@ if ($streamData === FALSE) {
     echo "Unable to read stream data from ".$streamUrl;
     exit();
 }
+//  Convert stream XML data to lowercase Json array
+	$xml = simplexml_load_string(strtolower($streamData), "SimpleXMLElement", LIBXML_NOCDATA);
+	$json = json_encode($xml);
+	$streamDataArray = json_decode($json, TRUE);
 //  Get song
-    $songTitleTag = strpos($streamData, "<SONGTITLE>") + 11;
-    $songTitleCloseTag = strpos($streamData, "</SONGTITLE>");
-    $songTitleLength = $songTitleCloseTag - $songTitleTag;
-    $song = substr($streamData, $songTitleTag, $songTitleLength);
+    $song = ucwords($streamDataArray['songtitle']);
     $songArray = preg_split($splitSongRegex, $song, -1, PREG_SPLIT_DELIM_CAPTURE);
     $artist = $songArray[0];
     $track = $songArray[1];
@@ -26,35 +27,37 @@ if ($streamData === FALSE) {
     $rawTrack = decode($track);
     $combined = decode($artist." - ".$track);
 //  Get stream title
-    $titleTag = strpos($streamData, "<SERVERTITLE>") + 13;
-    $titleCloseTag = strpos($streamData, "</SERVERTITLE>");
-    $titleLength = $titleCloseTag - $titleTag;
-    $title = substr($streamData, $titleTag, $titleLength);
+    $title  = ucwords($streamDataArray['servertitle']);
 //  Get genre
-    $genreTag = strpos($streamData, "<SERVERGENRE>") + 13;
-    $genreCloseTag = strpos($streamData, "</SERVERGENRE>");
-    $genreLength = $genreCloseTag - $genreTag;
-    $genre = substr($streamData, $genreTag, $genreLength);
+    $genre  = ucwords($streamDataArray['servergenre']);
 //  Get bitrate
-    $bitrateTag = strpos($streamData, "<BITRATE>") + 9;
-    $bitrateCloseTag = strpos($streamData, "</BITRATE>");
-    $bitrateLength = $bitrateCloseTag - $bitrateTag;
-    $bitrate = substr($streamData, $bitrateTag, $bitrateLength);
+    $bitrate = $streamDataArray['bitrate'];
 //  Get samplerate
-    $samplerateTag = strpos($streamData, "<SAMPLERATE>") + 12;
-    $samplerateCloseTag = strpos($streamData, "</SAMPLERATE>");
-    $samplerateLength = $samplerateCloseTag - $samplerateTag;
-    $samplerate = substr($streamData, $samplerateTag, $samplerateLength);
-//  Get listeners
-    $listenersTag = strpos($streamData, "<CURRENTLISTENERS>") + 18;
-    $listenersCloseTag = strpos($streamData, "</CURRENTLISTENERS>");
-    $listenersLength = $listenersCloseTag - $listenersTag;
-    $listeners = substr($streamData, $listenersTag, $listenersLength);
+    $samplerate = $streamDataArray['samplerate'];
+//  Get current listeners
+    $listeners  = number_format($streamDataArray['currentlisteners']);
 //  Get peak listeners
-    $peakListenersTag = strpos($streamData, "<PEAKLISTENERS>") + 15;
-    $peakListenersCloseTag = strpos($streamData, "</PEAKLISTENERS>");
-    $peakListenersLength = $peakListenersCloseTag  - $peakListenersTag;
-    $peakListeners = substr($streamData, $peakListenersTag, $peakListenersLength);
+    $peakListeners = number_format($streamDataArray['peaklisteners']);
+//  Get max listeners
+    $maxListeners = number_format($streamDataArray['maxlisteners']);
+//  Get unique listeners
+    $uniqueListeners = $streamDataArray['uniquelisteners'];
+//  Get average time
+    $averageTime = $streamDataArray['averagetime'];
+//  Get server url
+    $serverUrl = $streamDataArray['serverurl'];
+//  Get stream hits
+    $streamHits = number_format($streamDataArray['streamhits']);
+//  Get stream status
+    $streamStatus = $streamDataArray['streamstatus'];
+//  Get backup status
+    $backupStatus = $streamDataArray['backupstatus'];
+//  Get stream listed status (directory listing status)
+    $streamListed = $streamDataArray['streamlisted'];
+//  Get stream path
+    $streamPath = $streamDataArray['streampath'];
+//  Get stream uptime
+    $streamUpTime = number_format($streamDataArray['streamuptime']);
 //  All data can now be accessed using variables, let's show what's currently playing for example
     echo $combined;
 //  FUNCTIONS
