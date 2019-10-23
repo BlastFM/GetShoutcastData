@@ -15,9 +15,9 @@ if ($streamData === FALSE) {
     exit();
 }
 //  Convert stream XML data to lowercase Json array
-	$xml = simplexml_load_string(strtolower($streamData), "SimpleXMLElement", LIBXML_NOCDATA);
-	$json = json_encode($xml);
-	$streamDataArray = json_decode($json, TRUE);
+    $xml = simplexml_load_string(strtolower($streamData), "SimpleXMLElement", LIBXML_NOCDATA);
+    $json = json_encode($xml);
+    $streamDataArray = json_decode($json, TRUE);
 //  Get song
     $song = ucwords($streamDataArray['songtitle']);
     $songArray = preg_split($splitSongRegex, $song, -1, PREG_SPLIT_DELIM_CAPTURE);
