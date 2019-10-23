@@ -19,7 +19,7 @@ if ($streamData === FALSE) {
     $json = json_encode($xml);
     $streamDataArray = json_decode($json, TRUE);
 //  Get song
-    $song = ucwords($streamDataArray['songtitle']);
+    $song = mb_convert_case($streamDataArray['songtitle'], MB_CASE_TITLE, "UTF-8");
     $songArray = preg_split($splitSongRegex, $song, -1, PREG_SPLIT_DELIM_CAPTURE);
     $artist = $songArray[0];
     $track = $songArray[1];
