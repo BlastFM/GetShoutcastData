@@ -4,3 +4,5 @@ An alternative way to get meta data from a Shoutcast 2 stream. Although this sys
 We are also getting images, based on the artist/track combination from our own Music Art API system. This is intended as an example of how you might get data from a stream and does not perfrom all of the functions needed for a player.
 
 You may or may not need all of the variables in your application but I have included all of the available ones in index.php to show examples.
+
+This is a free contribution. As radio station people, we understand how difficult it is sometimes to find decent technical information about stream meta data and configurations.
