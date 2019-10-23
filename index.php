@@ -7,14 +7,14 @@
     $streamUrl = "http://".$server.":".$port."/stats?sid=1";
 //  The regular expression that splits the song info into Artist/Title. Usually escaped space hyphon space.
     $splitSongRegex = "/\ \-\ /";
-//  Attempt to get the stream data using a non SSL connection
+//  Attempt to get the stream data using a non SSL connection and suppress errors (@)
     $streamData = @file_get_contents($streamUrl);
 //  Exit if no data returned
 if ($streamData === FALSE) {
     echo "Unable to read stream data from ".$streamUrl;
     exit();
 }
-//  Convert stream XML data to lowercase Json array
+//  Convert stream XML data to lowercase Json array, (uppercase by default)
     $xml = simplexml_load_string(strtolower($streamData), "SimpleXMLElement", LIBXML_NOCDATA);
     $json = json_encode($xml);
     $streamDataArray = json_decode($json, TRUE);
