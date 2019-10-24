@@ -21,8 +21,8 @@ if ($streamData === FALSE) {
 //  Get song
     $song = mb_convert_case($streamDataArray['songtitle'], MB_CASE_TITLE, "UTF-8");
     $songArray = preg_split($splitSongRegex, $song, -1, PREG_SPLIT_DELIM_CAPTURE);
-    $artist = $songArray[0];
-    $track = $songArray[1];
+    $artist = utf8_decode($songArray[0]);
+    $track = utf8_decode($songArray[1]);
     $rawArtist = decode($artist);
     $rawTrack = decode($track);
     $combined = decode($artist." - ".$track);
