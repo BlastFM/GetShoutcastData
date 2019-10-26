@@ -62,7 +62,7 @@ if ($streamData === FALSE) {
     echo $combined;
 //  FUNCTIONS
  function decode($str) {
-    $find = array('&apos;', '&amp;apos;', '&quot;', ' &amp;amp; ', ' &amp; ');
+    $find = array('&apos;', '&amp;apos;', '&quot;', '&amp;amp;', '&amp;');
     $replace = array('\'', '\'', '"', ' & ', ' & ');
     $str = str_replace($find, $replace, $str);
     unset($find, $replace);
