@@ -60,6 +60,7 @@ if ($streamData === FALSE) {
     $streamUpTime = number_format($streamDataArray['streamuptime']);
 //  All data can now be accessed using variables, let's show what's currently playing for example
     echo $combined;
+    exit();
 //  FUNCTIONS
  function decode($str) {
     $find = array('&apos;', '&amp;apos;', '&quot;', '&amp;amp;', '&amp;');
