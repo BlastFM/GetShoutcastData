@@ -6,3 +6,5 @@ We are also getting images, based on the artist/track combination from our own M
 You may or may not need all of the variables in your application but I have included all of the available ones in index.php to show examples.
 
 This is a free contribution. As radio station people, BlastFM Limited understand how difficult it is sometimes to find decent technical information about stream meta data and configurations. See index.php for more info and examples.
+
+If you only want to get the current playing artist/track and are not interested in any other information, this is about the quickest and easiest way to do it, see: songInfo.php
