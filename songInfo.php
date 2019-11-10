@@ -11,7 +11,7 @@ if ($streamData === FALSE) {
 //	The regular expression that splits the song info into Artist/Title. Usually escaped space hyphon space.
 	$splitSongRegex = "/\ \-\ /";
 	$songArray = preg_split($splitSongRegex, $streamData, -1, PREG_SPLIT_DELIM_CAPTURE);
-	$artist = $songArray[0];
-	$track = $songArray[1];
+	$artist = trim($songArray[0]);
+	$track = trim($songArray[1]);
 	exit();
 ?>
