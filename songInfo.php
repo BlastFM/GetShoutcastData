@@ -13,5 +13,4 @@ if ($streamData === FALSE) {
 	$songArray = preg_split($splitSongRegex, $streamData, -1, PREG_SPLIT_DELIM_CAPTURE);
 	$artist = trim($songArray[0]);
 	$track = trim($songArray[1]);
-	exit();
 ?>
